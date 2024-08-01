@@ -5,7 +5,7 @@ import NotificationItem from "./NotificationItem";
 import PropTypes from "prop-types";
 import NotificationItemShape from "./NotificationItemShape";
 
-function Notifications({ displayDrawer, listNotifications }) {
+function Notifications({ displayDrawer = false, listNotifications = [] }) {
   return (
     <>
       <div className="menuItem">
@@ -27,18 +27,21 @@ function Notifications({ displayDrawer, listNotifications }) {
               outline: "none",
             }}
             aria-label="Close"
-            onClick={(e) => {
+            onClick={() => {
               console.log("Close button has been clicked");
             }}
           >
             <img src={closeIcon} alt="close icon" width="10px" />
           </button>
-          {listNotifications.length != 0 ? <p>Here is the list of notifications</p> : null}
+          {listNotifications.length !== 0 ? <p>Here is the list of notifications</p> : null}
           <ul>
-            {listNotifications.length == 0 ? <NotificationItem type="default" value="No new notification for now" /> : null}
-            {listNotifications.map((val, idx) => {
-              return <NotificationItem type={val.type} value={val.value} html={val.html} key={val.id} />;
-            })}
+            {listNotifications.length === 0 ? (
+              <NotificationItem type="default" value="No new notification for now" />
+            ) : (
+              listNotifications.map((val) => (
+                <NotificationItem type={val.type} value={val.value} html={val.html} key={val.id} />
+              ))
+            )}
           </ul>
         </div>
       ) : null}
@@ -49,11 +52,6 @@ function Notifications({ displayDrawer, listNotifications }) {
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
-};
-
-Notifications.defaultProps = {
-  displayDrawer: false,
-  listNotifications: [],
 };
 
 export default Notifications;
