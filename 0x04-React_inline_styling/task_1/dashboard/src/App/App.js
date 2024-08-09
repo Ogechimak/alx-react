@@ -66,7 +66,8 @@ class App extends React.Component {
         </div>
         <BodySection title="News from the School">
           <p>
-            Somebody that you loved.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis at tempora odio, necessitatibus repudiandae reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo ipsa
+              iste vero dolor voluptates.
           </p>
         </BodySection>
         <div className={css(styles.AppFooter)}>
